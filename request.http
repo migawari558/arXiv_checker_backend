@@ -1,0 +1,18 @@
+### ユーザー登録
+POST http://localhost:8000/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "maruwakari",
+  "password": "ASdf123465",
+  "categories": ["cond-mat.supr-con", "cond-mat.dis-nn"]
+}
+
+### サインイン
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "maruwakari",
+  "password": "ASdf123465"
+}
