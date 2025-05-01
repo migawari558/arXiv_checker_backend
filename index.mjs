@@ -2,7 +2,7 @@ import express from "express";
 import env from "dotenv";
 import mongoose from "mongoose";
 import session from "express-session";
-import apiRoute from "./routes/api.mjs";
+import apiRoute from "./src/routes/api.mjs";
 import MongoDBStoreFacroty from "connect-mongodb-session";
 const app = express();
 env.config();
