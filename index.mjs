@@ -31,8 +31,8 @@ app.use(
     saveUninitialized: false,
     store: store,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 10, // 1時間の期限
-      secure: false,
+      maxAge: 1000 * 60 * 60 * 10, // 10時間の期限
+      secure: true,
       httpOnly: true,
     },
   })
