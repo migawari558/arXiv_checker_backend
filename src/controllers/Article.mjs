@@ -225,7 +225,7 @@ export const addTagToArticle = async (req, res) => {
   }
 
   // タグの数が10を超えるならエラー
-  if (article.tags.length >= 10) {
+  if (article.tags.length > 10) {
     return res.status(400).json({ msg: "登録できるタグは10個までです" });
   }
 
@@ -314,7 +314,8 @@ export const updateArticle = async (req, res) => {
   }
 
   // 情報を更新
-  if (req.body.isOpen) await article.updateOne({ isOpen: req.body.isOpen });
+  if (req.body.isOpen !== undefined)
+    await article.updateOne({ isOpen: req.body.isOpen });
   if (req.body.note) await article.updateOne({ note: req.body.note });
 
   return res.status(200).json({ msg: "情報が更新されました" });

@@ -1,43 +1,21 @@
-import arxiv from "arxiv-api";
 import { validationResult } from "express-validator";
 import User from "../models/User.mjs";
-import { arxivIdFinder } from "../handlers/arxivIdFinder.mjs";
+import {
+  arxivIdFinder,
+  arxivQueryFinder,
+  arxivTimeline,
+} from "../handlers/arxivIdFinder.mjs";
 
 // 最後のログイン以降を全取得
 export const getArxiv = async (req, res) => {
   // userIdを取得
   const userId = req.session.user.userId;
 
-  // 時刻とカテゴリを取得
-  const { categories, lastLogin, thisLogin } = await User.findById(userId);
-  const date = `submittedDate:[${lastLogin
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "")} TO ${thisLogin
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "")}]`;
+  // 時刻とカテゴリと登録済み論文の一覧を取得
+  const query = await User.findById(userId);
 
-  // lastLoginからthisLoginまでのcategoriesの論文を取得
-  const papers = await arxiv.search({
-    searchQueryParams: [
-      {
-        include: [
-          {
-            name:
-              categories.map((cat) => `${cat}`).join(" OR cat:") +
-              " AND " +
-              date,
-            prefix: "cat",
-          },
-        ],
-      },
-    ],
-    start: 0,
-    maxResults: 50,
-    sortBy: "submittedDate",
-    sortOrder: "descending",
-  });
+  const papers = await arxivTimeline(query);
+
   papers.map((paper) => {
     paper.id = paper.id.split("/").pop();
     paper.id = paper.id.split("v")[0];
@@ -68,27 +46,9 @@ export const searchArxiv = async (req, res) => {
     return res.status(400).json(err);
   }
 
-  const { title, author, abstract, categories, freeWord } = req.body;
+  const papers = await arxivQueryFinder(req.body);
 
-  const query = [];
-  if (title) query.push({ name: title, prefix: "ti" });
-  if (author) query.push({ name: author, prefix: "au" });
-  if (abstract) query.push({ name: abstract, prefix: "abs" });
-  if (freeWord) query.push({ name: freeWord, prefix: "all" });
-  if (categories.length > 0)
-    query.push({
-      name: categories.map((cat) => `${cat}`).join(" OR cat:"),
-      prefix: "cat",
-    });
-
-  const papers = await arxiv.search({
-    searchQueryParams: [
-      {
-        include: query,
-      },
-    ],
-  });
-  papers.map((paper) => {
+  papers?.map((paper) => {
     paper.id = paper.id.split("/").pop();
     paper.id = paper.id.split("v")[0];
   });

@@ -47,6 +47,7 @@ router.put(
       return true;
     }),
   body("password")
+    .optional()
     .notEmpty()
     .isString()
     .withMessage("現在のパスワードを入力してください"),

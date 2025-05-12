@@ -4,11 +4,18 @@ import mongoose from "mongoose";
 import session from "express-session";
 import apiRoute from "./src/routes/api.mjs";
 import MongoDBStoreFacroty from "connect-mongodb-session";
+import cors from "cors";
 const app = express();
 env.config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://frontend:3000",
+    credentials: true,
+  })
+);
 
 // セッション管理
 const MongoDBStore = MongoDBStoreFacroty(session);
@@ -24,7 +31,7 @@ app.use(
     saveUninitialized: false,
     store: store,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 1, // 1時間の期限
+      maxAge: 1000 * 60 * 60 * 10, // 1時間の期限
       secure: false,
       httpOnly: true,
     },
