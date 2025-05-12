@@ -27,8 +27,13 @@ export async function loginUser(req, res) {
   if (!isCorrectPassword)
     return res.status(400).json({ msg: "パスワードが違います" });
 
+  // lastLoginを更新
+  user.lastLogin = user.thisLogin;
+  user.thisLogin = new Date();
+  const returnUser = await user.save();
+
   // password は返却しない
-  const { password, ...userContent } = user.toObject();
+  const { password, ...userContent } = returnUser.toObject();
 
   // セッションを保存
   req.session.user = {
@@ -36,10 +41,5 @@ export async function loginUser(req, res) {
     username: userContent.username,
   };
 
-  // lastLoginを更新
-  user.lastLogin = user.thisLogin;
-  user.thisLogin = new Date();
-  const returnUser = await user.save();
-
-  return res.status(200).json(returnUser);
+  return res.status(200).json(userContent);
 }

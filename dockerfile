@@ -1,7 +1,7 @@
-FROM node:22
+FROM node:lts
 WORKDIR /usr/src/app
 COPY ./package*.json .
-RUN npm i
+RUN npm ci
 RUN npm install -g nodemon
 COPY ./index.mjs .
 EXPOSE 8001

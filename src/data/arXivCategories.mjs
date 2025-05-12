@@ -42,13 +42,13 @@ const arxivAllCategories = [
   "cs.SY", // Systems and Control
 
   // Mathematics
+  "math.AC", // Commutative Algebra
   "math.AG", // Algebraic Geometry
-  "math.AT", // Algebraic Topology
   "math.AP", // Analysis of PDEs
-  "math.CT", // Category Theory
+  "math.AT", // Algebraic Topology
   "math.CA", // Classical Analysis and ODEs
   "math.CO", // Combinatorics
-  "math.AC", // Commutative Algebra
+  "math.CT", // Category Theory
   "math.CV", // Complex Variables
   "math.DG", // Differential Geometry
   "math.DS", // Dynamical Systems
@@ -61,29 +61,19 @@ const arxivAllCategories = [
   "math.IT", // Information Theory
   "math.KT", // K-Theory and Homology
   "math.LO", // Logic
-  "math.MP", // Mathematical Physics
   "math.MG", // Metric Geometry
-  "math.NT", // Number Theory
+  "math.MP", // Mathematical Physics
   "math.NA", // Numerical Analysis
+  "math.NT", // Number Theory
   "math.OA", // Operator Algebras
   "math.OC", // Optimization and Control
   "math.PR", // Probability
   "math.QA", // Quantum Algebra
-  "math.RT", // Representation Theory
   "math.RA", // Rings and Algebras
+  "math.RT", // Representation Theory
+  "math.SG", // Symplectic Geometry
   "math.SP", // Spectral Theory
   "math.ST", // Statistics Theory
-  "math.SG", // Symplectic Geometry
-
-  "cond-mat.dis-nn", // Disordered Systems and Neural Networks
-  "cond-mat.mes-hall", // Mesoscopic Systems and Quantum Hall Effect
-  "cond-mat.mtrl-sci", // Materials Science
-  "cond-mat.other", // Other Condensed Matter
-  "cond-mat.quant-gas", // Quantum Gases
-  "cond-mat.soft", // Soft Condensed Matter
-  "cond-mat.stat-mech", // Statistical Mechanics
-  "cond-mat.str-el", // Strongly Correlated Electrons
-  "cond-mat.supr-con", // Superconductivity
 
   // Physics
   "physics.acc-ph", // Accelerator Physics
@@ -96,6 +86,7 @@ const arxivAllCategories = [
   "physics.class-ph", // Classical Physics
   "physics.comp-ph", // Computational Physics
   "physics.data-an", // Data Analysis, Statistics and Probability
+  "physics.ed-ph", // Physics Education
   "physics.flu-dyn", // Fluid Dynamics
   "physics.gen-ph", // General Physics
   "physics.geo-ph", // Geophysics
@@ -103,10 +94,9 @@ const arxivAllCategories = [
   "physics.ins-det", // Instrumentation and Detectors
   "physics.med-ph", // Medical Physics
   "physics.optics", // Optics
-  "physics.ed-ph", // Physics Education
-  "physics.soc-ph", // Physics and Society
   "physics.plasm-ph", // Plasma Physics
   "physics.pop-ph", // Popular Physics
+  "physics.soc-ph", // Physics and Society
   "physics.space-ph", // Space Physics
 
   // Astrophysics
@@ -116,6 +106,33 @@ const arxivAllCategories = [
   "astro-ph.HE", // High Energy Astrophysical Phenomena
   "astro-ph.IM", // Instrumentation and Methods for Astrophysics
   "astro-ph.SR", // Solar and Stellar Astrophysics
+
+  // Condensed Matter
+  "cond-mat.dis-nn", // Disordered Systems and Neural Networks
+  "cond-mat.mes-hall", // Mesoscopic Systems and Quantum Hall Effect
+  "cond-mat.mtrl-sci", // Materials Science
+  "cond-mat.other", // Other Condensed Matter
+  "cond-mat.quant-gas", // Quantum Gases
+  "cond-mat.soft", // Soft Condensed Matter
+  "cond-mat.stat-mech", // Statistical Mechanics
+  "cond-mat.str-el", // Strongly Correlated Electrons
+  "cond-mat.supr-con", // Superconductivity
+
+  // High Energy Physics
+  "hep-ex", // High Energy Physics - Experiment
+  "hep-lat", // High Energy Physics - Lattice
+  "hep-ph", // High Energy Physics - Phenomenology
+  "hep-th", // High Energy Physics - Theory
+
+  // General Relativity and Quantum Cosmology
+  "gr-qc", // General Relativity and Quantum Cosmology
+
+  // Nuclear Theory and Experiment
+  "nucl-ex", // Nuclear Experiment
+  "nucl-th", // Nuclear Theory
+
+  // Quantum Physics
+  "quant-ph", // Quantum Physics
 
   // Quantitative Biology
   "q-bio.BM", // Biomolecules
@@ -145,8 +162,8 @@ const arxivAllCategories = [
   "stat.CO", // Computation
   "stat.ME", // Methodology
   "stat.ML", // Machine Learning
-  "stat.TH", // Statistics Theory
   "stat.OT", // Other Statistics
+  "stat.TH", // Statistics Theory
 
   // Electrical Engineering and Systems Science
   "eess.AS", // Audio and Speech Processing
@@ -158,6 +175,12 @@ const arxivAllCategories = [
   "econ.EM", // Econometrics
   "econ.GN", // General Economics
   "econ.TH", // Theoretical Economics
+
+  "nlin.AO",
+  "nlin.CD",
+  "nlin.CG",
+  "nlin.PS",
+  "nlin.SI",
 ];
 
 export default arxivAllCategories;

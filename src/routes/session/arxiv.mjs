@@ -11,7 +11,7 @@ const router = Router();
 
 router.get("/", requestErrorHandler(getArxiv));
 
-router.get(
+router.post(
   "/search",
   body("title").isString(),
   body("author").isString(),
