@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://frontend:3000",
+    origin: "https://arxiv-checker-frontend.vercel.app/",
     credentials: true,
   })
 );
