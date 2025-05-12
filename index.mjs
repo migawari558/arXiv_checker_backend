@@ -32,6 +32,7 @@ app.use(
     store: store,
     cookie: {
       maxAge: 1000 * 60 * 60 * 10, // 10時間の期限
+      sameSite: "none", // クロスドメインでは "none"
       secure: true,
       httpOnly: true,
     },
