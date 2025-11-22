@@ -5,7 +5,7 @@ import { parseString } from "xml2js";
 const parseStringPromisified = util.promisify(parseString);
 
 const get_arxiv_url = (query) =>
-  `http://export.arxiv.org/api/query?search_query=${query}&start=0&max_results=50&sortBy=submittedDate&sortOrder=descending;`;
+  `http://export.arxiv.org/api/query?search_query=${query}&start=0&max_results=50&sortBy=submittedDate&sortOrder=descending`;
 
 function parseArxivObject(entry) {
   return {
